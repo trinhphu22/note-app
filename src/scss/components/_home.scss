@@ -1,0 +1,410 @@
+.home {
+  @include flex(flex-start, flex-start);
+
+  background-color: $sub-color;
+  min-height: 100vh;
+
+  &__nav {
+    @include flex(flex-start, flex-start);
+
+    flex: 1.1;
+    height: 100vh;
+    overflow: auto;
+    background-color: map-get($colors, WHITE);
+    box-shadow: 2px 2px 8px 1px map-get($colors, SILVER);
+    -webkit-box-shadow: 2px 2px 8px 1px map-get($colors, SILVER);
+    -moz-box-shadow: 2px 2px 8px 1px map-get($colors, SILVER);
+    z-index: 11;
+    flex-direction: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__header {
+      @include flex(center, center);
+
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      min-height: 70px;
+      font-family: $font-design;
+      flex-direction: column;
+      font-size: 1.2rem;
+      background-color: map-get($colors, WHITE);
+      z-index: 15;
+    }
+
+    &__subnav {
+      @include flex(center, flex-start);
+
+      width: 100%;
+      height: 100vh;
+      margin-top: 20px;
+      flex-direction: column;
+
+      &__item {
+        @include flex(center, flex-start);
+
+        width: 90%;
+        padding: 15px 30px;
+        color: map-get($colors, GRAY_TXT_SECOND);
+
+        &:hover {
+          cursor: pointer;
+          color: $main-color-hover;
+        }
+      }
+
+      .active {
+        // color: $main-color;
+        background-color: $main-color;
+        color: map-get($colors, WHITE);
+        border-radius: 10px;
+        margin-right: 10px;
+        box-shadow: $box-shadow-nav;
+        -webkit-box-shadow: $box-shadow-nav;
+        -moz-box-shadow: $box-shadow-nav;
+      }
+    }
+
+    &__btn {
+      @include flex(flex-end, center);
+
+      position: -webkit-sticky;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      min-height: 80px;
+      background-color: map-get($map: $colors, $key: WHITE);
+
+      .btn-add {
+        @include flex(center, center);
+
+        width: 80%;
+        height: 50px;
+        margin-bottom: 10px;
+        background-color: $main-color;
+        border-radius: 10px;
+        color: $txt-white;
+
+        .icon {
+          margin-right: 10px;
+          font-size: 1.2rem;
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: $main-color-hover;
+        }
+      }
+    }
+  }
+
+  &__main {
+    flex: 5;
+    height: 100vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &__header {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 70px;
+      width: 100%;
+      padding: 0 10px;
+      background-color: $txt-white;
+      box-shadow: 0px 2px 8px 1px map-get($map: $colors, $key: SILVER);
+      -webkit-box-shadow: 0px 2px 8px 1px map-get($map: $colors, $key: SILVER);
+      -moz-box-shadow: 0px 2px 8px 1px map-get($map: $colors, $key: SILVER);
+
+      @include flex(center, flex-end);
+
+      & > * {
+        margin: 0 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__body {
+      padding: 20px;
+
+      & > * ~ * {
+        padding: 5px;
+      }
+
+      &__title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      &__list {
+        .table {
+          font-size: 0.8rem;
+          width: 100%;
+          height: auto;
+          border-collapse: collapse;
+          padding: 0;
+          margin: 0;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          background-color: $txt-white;
+
+          &__header,
+          &__body {
+            @include flex(center, center);
+
+            min-height: 50px;
+
+            &__item {
+              flex: 1;
+              padding: 0 10px;
+            }
+
+            .flex-action {
+              @include flex(center, center);
+
+              flex: 0.5;
+            }
+          }
+
+          &__header {
+            border-bottom: 1px solid #ccc;
+            background-color: $main-color;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+
+            &__item {
+              font-weight: 600;
+              color: map-get($map: $colors, $key: WHITE);
+              text-transform: uppercase;
+            }
+          }
+
+          &__body {
+            // border-bottom: 1px solid #ccc;
+
+            &__item {
+              flex: 1;
+              font-size: 0.9rem;
+              text-transform: capitalize;
+
+              .product-name {
+                @include flex(center, flex-start);
+              }
+
+              img {
+                height: 40px;
+                width: 40px;
+                margin-right: 10px;
+                padding: 2px;
+                border-radius: 50%;
+                box-shadow: $box-shadow-item;
+              }
+
+              .img-recipe {
+                height: 120px;
+                width: 180px;
+                margin: 10px;
+                object-fit: fill;
+                border-radius: 10px;
+              }
+
+              .img-country {
+                width: 50px;
+                box-shadow: none;
+              }
+
+              .txt-bold {
+                font-weight: 600;
+              }
+
+              .select-process {
+                width: 100%;
+                height: 30px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 0 10px;
+                font-size: 0.8rem;
+                background-color: $txt-white;
+
+                &:focus {
+                  outline: none;
+                  border: 1px solid $txt-gray;
+                }
+              }
+
+              .status {
+                border-radius: 20px;
+                font-size: 0.8rem;
+                padding: 5px 10px;
+              }
+
+              .color-F7E3EE {
+                background-color: #f7e3ee;
+                color: #f50057;
+              }
+
+              .color-FBF4E2 {
+                background-color: #fbf4e2;
+                color: #f9a825;
+              }
+
+              .color-B9F8B9 {
+                background-color: #b9f8b9;
+                color: #4caf50;
+              }
+
+              .color-cancel {
+                background-color: $txt-silver;
+                color: $txt-second-color;
+              }
+
+              .flex-center {
+                @include flex(center, center);
+              }
+
+              .show,
+              .edit,
+              .delete,
+              .recipe {
+                font-size: 1.2rem;
+                color: $txt-second-color;
+                margin-right: 5px;
+
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+
+              .show:hover {
+                color: #03a9f4;
+              }
+
+              .edit:hover {
+                color: #06a262;
+              }
+
+              .delete:hover {
+                color: #f50057;
+              }
+
+              .recipe:hover {
+                color: #f9a825;
+              }
+
+              .toggle-on {
+                color: #06a262;
+                font-size: 2.5rem;
+
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+
+              .toggle-off {
+                color: #f50057;
+                font-size: 2.5rem;
+
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+
+          .item-hover {
+            background-color: #eff5fa;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      &__search {
+        @include flex(center, space-between);
+
+        min-height: 100px;
+        width: 100%;
+        padding: 0 15px;
+        margin-bottom: 40px;
+        color: $txt-second-color;
+        background-color: $txt-white;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 0.9rem;
+
+        & > * {
+          @include flex(center, flex-start);
+
+          height: 50px;
+          padding: 0 10px;
+          border-radius: 10px;
+          background-color: $txt-silver;
+          border: 1px solid #ccc;
+        }
+
+        .search {
+          color: $txt-second-color;
+
+          &:focus {
+            background-color: $txt-white;
+            // border: unset;
+            outline: none;
+          }
+
+          &::placeholder {
+            color: $txt-second-color;
+          }
+        }
+
+        .select {
+          width: 50px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .button {
+          @include flex(center, center);
+
+          background-color: $main-color;
+          color: $txt-white;
+
+          .icon {
+            font-size: 1.2rem;
+            margin-right: 5px;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: $main-color-hover;
+          }
+        }
+      }
+
+      .dashboard {
+        & > * {
+          width: 78%;
+        }
+
+        .button {
+          width: 20%;
+        }
+      }
+    }
+  }
+}
