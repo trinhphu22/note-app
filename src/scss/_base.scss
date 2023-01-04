@@ -41,6 +41,7 @@ a:hover {
   max-width: 1920px;
   padding: 0;
   margin: auto;
+  border: 1px solid map-get($map: $colors, $key: SILVER);
 
   @include tablet {
     padding: 0 20px;
