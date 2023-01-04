@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { HiOutlinePlusSm } from "react-icons/hi";
+import { TbNotebook, TbPlaylistAdd } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-
+import AddCategory from "./AddCategory";
 
 const _nav = [
   {
@@ -17,6 +17,15 @@ const _nav = [
 
 const Navbar = () => {
   const [active, setActive] = useState("/");
+  const [visible, setVisible] = useState(false);
+
+  const show = () => {
+    setVisible(true);
+  };
+
+  const hide = () => {
+    setVisible(false);
+  };
 
   return (
     <div className="home__nav">
@@ -34,6 +43,7 @@ const Navbar = () => {
               active === item.link && "active"
             )}
           >
+            <TbNotebook className="icon" />
             <span>{item.name}</span>
           </Link>
         ))}
@@ -41,14 +51,15 @@ const Navbar = () => {
       <div className="home__nav__btn">
         <div
           onClick={() => {
-            // handleLogout();
+            show();
           }}
           className="btn-add"
         >
-          <HiOutlinePlusSm className="icon" />
+          <TbPlaylistAdd className="icon" />
           <span>Add Category</span>
         </div>
       </div>
+      <AddCategory visible={visible} hide={hide} />
     </div>
   );
 };

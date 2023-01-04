@@ -51,6 +51,11 @@
         padding: 15px 30px;
         color: map-get($colors, GRAY_TXT_SECOND);
 
+        .icon {
+          margin-right: 10px;
+          font-size: 1.2rem;
+        }
+
         &:hover {
           cursor: pointer;
           color: $main-color-hover;
@@ -84,7 +89,7 @@
 
         width: 80%;
         height: 50px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         background-color: $main-color;
         border-radius: 10px;
         color: $txt-white;
